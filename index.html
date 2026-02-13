@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hey Partner 💖</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f0;
+            padding: 50px;
+        }
+        h1 {
+            color: #ff3366;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #ff6699;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            position: relative;
+        }
+        #message {
+            margin-top: 30px;
+            font-size: 24px;
+            color: #cc0055;
+        }
+        img.gif {
+            margin-top: 20px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hey Partner! 😄</h1>
+    <p>How are you doing? Click the button for a surprise!</p>
+
+    <button id="startBtn" onclick="nextPage()">Click Me ❤️</button>
+
+    <div id="message"></div>
+
+    <script>
+        function nextPage() {
+            // Hide start button
+            document.getElementById("startBtn").style.display = "none";
+
+            // Show Valentine proposal
+            document.getElementById("message").innerHTML = `
+                Will you be my Valentine? 💖<br><br>
+                <button id="yesBtn" onclick="yesClicked()">Yes 💕</button>
+                <button id="noBtn">No 😅</button>
+            `;
+
+            // Add playful movement for "No" button
+            const noBtn = document.getElementById("noBtn");
+
+            noBtn.addEventListener("mouseover", () => {
+                const x = Math.floor(Math.random() * (window.innerWidth - 100));
+                const y = Math.floor(Math.random() * (window.innerHeight - 100));
+                noBtn.style.position = "absolute";
+                noBtn.style.left = x + "px";
+                noBtn.style.top = y + "px";
+            });
+        }
+
+        function yesClicked() {
+            // First celebration
+            document.body.innerHTML = `
+                <h1>Yay! 💖</h1>
+                <p>I'm so glad you said YES! 😍</p>
+                <img class="gif" src="Scary Movie Shawn Wayans GIF - Scary Movie Shawn Wayans But Wait Theres More - Discover & Share GIFs.gif">
+                <br>
+                <button onclick="nextProposal()">Click for more 🎉</button>
+            `;
+        }
+
+        function nextProposal() {
+            // Final proposal page
+            document.body.innerHTML = `
+                <h1>One More Question 💖</h1>
+                <p>Would you be my Girlfriend... officially?
+                    i realised i did not make it explicit😅
+                    💌</p>
+                <button onclick="finalYes()">Yes 💕</button>
+                <button id="finalNo">No 😅</button>
+            `;
+
+            // Make final No button run away
+            const finalNo = document.getElementById("finalNo");
+            finalNo.addEventListener("mouseover", () => {
+                const x = Math.floor(Math.random() * (window.innerWidth - 100));
+                const y = Math.floor(Math.random() * (window.innerHeight - 100));
+                finalNo.style.position = "absolute";
+                finalNo.style.left = x + "px";
+                finalNo.style.top = y + "px";
+            });
+        }
+
+        function finalYes() {
+            document.body.innerHTML = `
+                <h1>💖 Yay! 💖</h1>
+                <img class="gif" src="Trending GIF happy season 8 excited hbo wow nice celebrate yay crowd high five winning cheer cheering curb your enthusiasm oh yeah shout larry david stoked i can't believe it yippie.gif" alt="Celebration">
+                `
+            ;
+        }
+    </script>
+
+</body>
+</html>
